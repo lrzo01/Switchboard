@@ -13,8 +13,6 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
 COPY config.toml .
-COPY schemas/ ./schemas/
-COPY data/ ./data/
 COPY src/ ./src/
 
 RUN uv sync --frozen --no-dev
