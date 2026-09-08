@@ -1,3 +1,8 @@
+.env
+.DS_Store
+.vscode/
+.idea/
+
 # Python-generated files
 __pycache__/
 *.py[oc]
@@ -8,3 +13,6 @@ wheels/
 
 # Virtual environments
 .venv
+venv/
+
+data/
