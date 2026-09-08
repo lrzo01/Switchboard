@@ -1,6 +1,7 @@
 
   
 # Switchboard
+[![Lint](https://github.com/lrzo01/Switchboard/actions/workflows/lint.yml/badge.svg?branch=master)](https://github.com/lrzo01/Switchboard/actions/workflows/lint.yml)
 
 Switchboard is a simple database using the Darwin push port feed from RDM. It's not particularly effective, but it gets the job done.
 
