@@ -1,0 +1,11 @@
+[snapshot]
+snapshot_url = "https://api1.raildata.org.uk/1010-darwin-real-time-train-information-snapshots1_0/download/snapshot"
+snapshot_request_period = 30
+snapshot_request_max_attempts = 60
+
+[darwin]
+kafka_bootstrap_server = "pkc-z3p1v0.europe-west2.gcp.confluent.cloud:9092"
+topic = "prod-1010-Darwin-Train-Information-Push-Port-IIII2_0-XML"
+timetable_file_path = "data"
+warn_about_old_timetables = true
+
