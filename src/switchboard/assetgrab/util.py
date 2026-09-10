@@ -51,13 +51,20 @@ def timestamp_sanity_check(timestamp: str) -> None:
     except ValueError:
         print(f"could not parse timestamp")
 
-
 def load_xml_by_file_name(name: str) -> ET.Element:
     file_directory = load_config_item("darwin", "timetable_file_path", str)
+    file_path = os.path.join(file_directory, name)
+    
     try:
-        tree = ET.parse(f"{file_directory}/{name}")
+        tree = ET.parse(file_path)
         return tree.getroot()
-    except FileNotFoundError:
-        raise FileNotFoundError(f"could not find timetable ref file {name}")
-    except:
-        raise Exception(f"problem loading xml file")
+    except (FileNotFoundError, IsADirectoryError):
+        raise FileNotFoundError(f"could not find timetable ref: {name}")
+    except ET.ParseError:
+        try:
+            with gzip.open(file_path, 'rb') as f:
+                tree = ET.parse(f)
+                return tree.getroot()
+        except Exception as e:
+            raise RuntimeError(f"failed to open timetable (attempted gzip decompression) {name}: {e}")
+
